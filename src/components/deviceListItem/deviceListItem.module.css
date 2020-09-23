@@ -1,0 +1,13 @@
+.card {
+    margin-top: 1rem;
+    background: #080606;
+}
+
+.text {
+    text-align: left;
+    color: #fff;
+}
+
+.image {
+    max-height: 3rem;
+}
