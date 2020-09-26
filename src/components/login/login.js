@@ -2,30 +2,28 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 
-import styles from './login.module.css';
+import styles from "./login.module.css";
 
 class Login extends Component {
-
   state = {
-    redirect: false
-  }
+    redirect: false,
+  };
 
   setRedirect = () => {
     this.setState({
-      redirect: true
-    })
-  }
-  
+      redirect: true,
+    });
+  };
+
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to='/devices' />
+      return <Redirect to="/devices" />;
     }
-  }
+  };
 
   render() {
-
     return (
       <div className={styles.loginContainer}>
         {this.renderRedirect()}
@@ -42,7 +40,9 @@ class Login extends Component {
             <Form.Text className="text-muted" />
           </Form.Group>
 
-          <Button className={styles.button} type="submit">Login</Button>
+          <Button className={styles.button} type="submit">
+            Login
+          </Button>
         </Form>
       </div>
     );

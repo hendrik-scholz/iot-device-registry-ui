@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { TileLayer, Map, Marker, Popup } from "react-leaflet";
-import * as axios from "axios";
 import "leaflet/dist/leaflet.css";
 import styles from "./map.module.css";
 
@@ -19,29 +18,21 @@ L.Icon.Default.mergeOptions({
 });
 
 export default class LeafletMap extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      devices: [],
-    };
-  }
-
   render() {
     let position = [0, 0];
     let marker;
 
     if (
-      this.state.devices[0] &&
-      this.state.devices[0].geoPosition.coordinates.latitude &&
-      this.state.devices[0].geoPosition.coordinates.longitude
+      this.props.devices[0] &&
+      this.props.devices[0].geoPosition.coordinates.latitude &&
+      this.props.devices[0].geoPosition.coordinates.longitude
     ) {
       position = [
-        this.state.devices[0].geoPosition.coordinates.latitude,
-        this.state.devices[0].geoPosition.coordinates.longitude,
+        this.props.devices[0].geoPosition.coordinates.latitude,
+        this.props.devices[0].geoPosition.coordinates.longitude,
       ];
 
-      marker = this.state.devices.map((device) => {
+      marker = this.props.devices.map((device) => {
         const positionA = [
           device.geoPosition.coordinates.latitude,
           device.geoPosition.coordinates.longitude,
@@ -69,17 +60,5 @@ export default class LeafletMap extends Component {
     } else {
       return <br />;
     }
-  }
-
-  // TODO: move to device view
-  componentDidMount() {
-    axios
-      .get("http://localhost:3000/devices")
-      .then((res) => {
-        this.setState({ devices: res.data });
-      })
-      .catch((error) => {
-        console.log("Error:" + JSON.stringify(error));
-      });
   }
 }

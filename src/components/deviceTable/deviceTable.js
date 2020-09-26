@@ -1,32 +1,11 @@
-import React, {Component} from 'react';
-import DeviceListItem from '../deviceListItem/deviceListItem';
-import * as axios from "axios";
+import React from "react";
 
-class DeviceTable extends Component {
+import DeviceListItem from "../deviceListItem/deviceListItem";
 
-    constructor(props) {
-        super(props)
-    
-        this.state = {
-            devices: []
-        }
-    }
-
-    render() {
-        return this.state.devices.map(device => <DeviceListItem device={device} key={device.uuid}/>)
-    }
-
-    // TODO: move to device view
-    componentDidMount() {
-        axios
-          .get("http://localhost:3000/devices")
-          .then((res) => {
-            this.setState({ devices: res.data });
-          })
-          .catch((error) => {
-            console.log("Error:" + JSON.stringify(error));
-          });
-      }
+function DeviceTable({ devices }) {
+  return devices.map((device) => (
+    <DeviceListItem device={device} key={device.uuid} />
+  ));
 }
 
 export default DeviceTable;

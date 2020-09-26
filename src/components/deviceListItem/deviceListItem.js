@@ -1,19 +1,25 @@
-import React from 'react';
-import Card from 'react-bootstrap/Card';
-import styles from './deviceListItem.module.css';
+import React from "react";
+import styles from "./deviceListItem.module.css";
 
-function DeviceListItem({device}) {
-    return(
-        <Card className={styles.card}>
-            <Card.Body>
-                <Card.Title className={styles.text}>{device.identification.device}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted" className={styles.text}>Company: {device.identification.company}</Card.Subtitle>
-                <Card.Text className={styles.text}>
-                    Authorization: {device.authorization.name}, {device.authorization.role}
-                </Card.Text>
-            </Card.Body>
-        </Card>
-    );
+import img from "../map/pexels-photomix-company-96612.jpg";
+
+function DeviceListItem({ device }) {
+  return (
+    <div className={styles.card}>
+      <div className={styles.imageColumn}>
+        <img src={img} alt="" className={styles.image}></img>
+      </div>
+      <div className={styles.infoColumn}>
+        <p className={styles.header}>{device.identification.device}</p>
+        <p className={styles.text}>
+          Company: {device.identification.company}
+          <br></br>
+          Authorization: {device.authorization.name},{" "}
+          {device.authorization.role}
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export default DeviceListItem;
