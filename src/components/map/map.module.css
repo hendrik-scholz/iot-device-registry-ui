@@ -1,0 +1,11 @@
+.map {
+    height: 40rem;
+    max-height: 40rem;
+}
+
+.popupImage {
+    height: 3rem;
+    max-height: 3rem;
+    margin-top: 0.5rem;
+    border-radius: 0.25rem;
+}

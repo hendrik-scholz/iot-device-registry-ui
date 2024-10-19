@@ -1,0 +1,17 @@
+.view {
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #292929;
+    border-radius: 0.5rem;
+}
+
+.tile {
+    padding: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: 1rem;
+}
